@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PHP Password Generator</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 50px; }
-        h1 { color: #333; }
-        form { max-width: 400px; margin: auto; }
-        label { display: block; margin-top: 10px; }
-        button { margin-top: 20px; padding: 10px 20px; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 <body>
     <h1>PHP Password Generator</h1>

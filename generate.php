@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="styles.css">
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $length = isset($_POST['length']) ? (int)$_POST['length'] : 12;
@@ -44,4 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: index.php');
     exit;
 }
+// Function to copy password
+echo "<p style='font-size: 24px;'><strong id='password'>$password</strong></p>";
+echo "<button onclick='copyPassword()'>Copy to Clipboard</button>";
+echo "<script>
+function copyPassword() {
+    var copyText = document.getElementById('password').innerText;
+    navigator.clipboard.writeText(copyText).then(function() {
+        alert('Password copied to clipboard');
+    }, function(err) {
+        alert('Could not copy password: ', err);
+    });
+}
+</script>";
+
 ?>
