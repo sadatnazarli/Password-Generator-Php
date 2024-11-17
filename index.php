@@ -183,24 +183,10 @@
                   </div>";
         }
 
-        echo "<div class='password-output'>";
-        echo "<h3>Previously Generated Passwords:</h3>";
-
-        $stmt = $pdo->query("SELECT password, strength, created_at FROM passwords ORDER BY created_at DESC LIMIT 10");
-        $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($passwords) {
-            echo "<ul>";
-            foreach ($passwords as $entry) {
-                echo "<li><strong>{$entry['password']}</strong> - {$entry['strength']} ({$entry['created_at']})</li>";
-            }
-            echo "</ul>";
-        } else {
-            echo "<p>No passwords generated yet.</p>";
-        }
-
-        echo "</div>";
+        
         ?>
+<p><a href="login.php" style="color: #ffeb3b; text-decoration: none;">View All Generated Passwords</a></p>
+
     </div>
 </body>
 </html>
