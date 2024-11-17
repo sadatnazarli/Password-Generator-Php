@@ -1,11 +1,16 @@
 <?php
 session_start();
 
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    header('Location: view_passwords.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if ($username === 'admin' && $password === 'password123') { // Simple hardcoded credentials
+    if ($username === 'admin' && $password === 'admin') {
         $_SESSION['logged_in'] = true;
         header('Location: view_passwords.php');
         exit;
