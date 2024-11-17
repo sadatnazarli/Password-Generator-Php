@@ -17,7 +17,7 @@ $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Passwords</title>
+    <title>Generated Passwords</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -26,12 +26,12 @@ $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
             text-align: center;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
-        .password-container {
+        .container {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             padding: 30px;
@@ -39,6 +39,7 @@ $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 600px;
+            text-align: left;
         }
         table {
             width: 100%;
@@ -63,7 +64,7 @@ $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
-    <div class="password-container">
+    <div class="container">
         <h1>Generated Passwords</h1>
         <table>
             <thead>
@@ -83,7 +84,8 @@ $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <p><a href="logout.php">Logout</a></p>
+        <p><a href="index.php">Back to Generator</a></p>
+        <p><a href="logout.php" style="color: #ffeb3b; text-decoration: none;">Logout</a></p>
     </div>
 </body>
 </html>
