@@ -46,18 +46,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: index.php');
     exit;
 }
-// Function to copy password
-echo "<p style='font-size: 24px;'><strong id='password'>$password</strong></p>";
-echo "<button onclick='copyPassword()'>Copy to Clipboard</button>";
-echo "<script>
-function copyPassword() {
-    var copyText = document.getElementById('password').innerText;
-    navigator.clipboard.writeText(copyText).then(function() {
-        alert('Password copied to clipboard');
-    }, function(err) {
-        alert('Could not copy password: ', err);
-    });
+// SHowing Strength of password
+function assessStrength($password) {
+    $strength = 0;
+    if (preg_match('/[a-z]/', $password)) $strength += 1;
+    if (preg_match('/[A-Z]/', $password)) $strength += 1;
+    if (preg_match('/[0-9]/', $password)) $strength += 1;
+    if (preg_match('/[\W]/', $password)) $strength += 1;
+    if (strlen($password) >= 12) $strength += 1;
+
+    switch ($strength) {
+        case 5:
+            return 'Very Strong';
+        case 4:
+            return 'Strong';
+        case 3:
+            return 'Medium';
+        case 2:
+            return 'Weak';
+        default:
+            return 'Very Weak';
+    }
 }
-</script>";
+
+$strength = assessStrength($password);
+echo "<p>Password Strength: <strong>$strength</strong></p>";
+
 
 ?>
